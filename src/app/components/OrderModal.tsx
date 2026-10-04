@@ -51,6 +51,17 @@ export default function OrderModal({ open, initialCraft, onClose }: Props) {
     return () => urls.forEach((url) => URL.revokeObjectURL(url));
   }, [images]);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   const addImages = async (files: FileList | null) => {
     if (!files || files.length === 0) return;
     setCompressing(true);
