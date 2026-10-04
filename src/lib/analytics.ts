@@ -22,8 +22,6 @@ function trackEvent(name: string, params: Record<string, unknown> = {}) {
 export function trackOrderSubmitted({ craft, budget }: { craft: string | null; budget: string | null }) {
   trackEvent("generate_lead", { craft, budget });
 
-  // Track Google Ads conversion (once conversion label is set)
-  if (GOOGLE_ADS_CONVERSION_LABEL !== "CONVERSION_LABEL_PENDING") {
-    trackEvent("conversion", { send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABEL}` });
-  }
+  // Track Google Ads conversion
+  trackEvent("conversion", { send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABEL}` });
 }
