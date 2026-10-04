@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { trackOrderSubmitted } from "@/lib/analytics";
 import { compressImage } from "@/lib/compressImage";
 
+// Rule: Always use English numerals (0-9) in all text/copy, even for Arabic content
+
 const CRAFTS = ["خزف وفخار", "كروشيه", "دمى", "خوصيات"];
-const BUDGETS = ["أقل من ١٠٠ ريال", "١٠٠ - ٣٠٠ ريال", "٣٠٠ - ٦٠٠ ريال", "أكثر من ٦٠٠ ريال"];
+const BUDGETS = ["أقل من 100 ريال", "100 - 300 ريال", "300 - 600 ريال", "أكثر من 600 ريال"];
 
 type Props = {
   open: boolean;
@@ -165,7 +167,7 @@ export default function OrderModal({ open, initialCraft, onClose }: Props) {
                 ✕
               </button>
             </div>
-            <p className="mt-1 text-sm text-gray-400">الخطوة {step} من ٢</p>
+            <p className="mt-1 text-sm text-gray-400">الخطوة {step} من 2</p>
 
             {step === 1 ? (
               <div className="mt-6 flex flex-col gap-6">
