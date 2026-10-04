@@ -35,7 +35,7 @@ export default function Footer() {
             hello@borooa.com
           </a>
           <a
-            href="https://instagram.com/borooa"
+            href="https://instagram.com/borooa.sa"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-gray-400 hover:text-white"
@@ -43,7 +43,7 @@ export default function Footer() {
             انستقرام
           </a>
           <a
-            href="https://wa.me/966500000000"
+            href="https://wa.me/966579385204"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-gray-400 hover:text-white"
