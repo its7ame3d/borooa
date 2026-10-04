@@ -1,11 +1,6 @@
 // Google Ads conversion ID (Account ID: 565-107-1715)
-export const GOOGLE_ADS_ID = "AW-5651071715";
-export const GOOGLE_ADS_CONVERSION_LABEL = "CONVERSION_LABEL_PENDING";
-// TODO: Get conversion label from Google Ads:
-// 1. Go to Google Ads > Tools & Settings > Conversions > Create Conversion Action
-// 2. Choose "Website" and name it "Order Submission"
-// 3. Copy the conversion label from "Tag setup" page
-// 4. Replace CONVERSION_LABEL_PENDING with the actual label
+export const GOOGLE_ADS_ID = "AW-18087500309";
+export const GOOGLE_ADS_CONVERSION_LABEL = "njCNCPH_m5EdEJW05bBD";
 
 declare global {
   interface Window {
