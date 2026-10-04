@@ -62,13 +62,16 @@ export default function OrderModal({ open, initialCraft, onClose }: Props) {
     };
 
     if (open) {
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
       document.addEventListener("touchmove", preventScroll, { passive: false });
     } else {
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
       document.removeEventListener("touchmove", preventScroll);
     }
     return () => {
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
       document.removeEventListener("touchmove", preventScroll);
     };
