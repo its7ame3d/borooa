@@ -7,7 +7,7 @@ import { compressImage } from "@/lib/compressImage";
 // Rule: Always use English numerals (0-9) in all text/copy, even for Arabic content
 
 const CRAFTS = ["خزف وفخار", "كروشيه", "دمى", "خوصيات"];
-const BUDGETS = ["أقل من 100 ريال", "100 - 300 ريال", "300 - 600 ريال", "أكثر من 600 ريال"];
+const BUDGETS = ["100 - 300 ريال", "300 - 600 ريال", "أكثر من 600 ريال"];
 
 type Props = {
   open: boolean;
