@@ -143,7 +143,7 @@ export default function OrderModal({ open, initialCraft, onClose }: Props) {
         {submitted ? (
           <div className="flex flex-col items-center py-8 text-center">
             <h2 className="text-2xl font-black text-gray-900">تم استلام طلبك!</h2>
-            <p className="mt-3 text-gray-500">سنتواصل معك قريباً لتأكيد تفاصيل طلبك.</p>
+            <p className="mt-3 text-lg text-gray-500">سنتواصل معك قريباً لتأكيد تفاصيل طلبك.</p>
             <button
               type="button"
               onClick={onClose}
@@ -200,7 +200,7 @@ export default function OrderModal({ open, initialCraft, onClose }: Props) {
                     onChange={(e) => setDetails(e.target.value)}
                     rows={4}
                     placeholder="مثال: أرغب بكوب فخاري بلون ترابي مكتوب عليه اسمي..."
-                    className="w-full rounded-xl border border-gray-200 px-4 py-3 text-right text-base text-gray-900 placeholder:text-gray-400 focus:border-pink-600 focus:outline-none"
+                    className="w-full rounded-xl border border-gray-200 px-4 py-3 text-right text-lg text-gray-900 placeholder:text-gray-400 focus:border-pink-600 focus:outline-none"
                   />
                 </div>
 
