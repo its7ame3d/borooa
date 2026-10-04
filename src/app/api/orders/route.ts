@@ -38,15 +38,9 @@ export async function POST(request: Request) {
     });
   }
 
-  try {
-    await sendOrderEmail({ craft, budget, name, phone, city, details, images });
-  } catch (error) {
+  sendOrderEmail({ craft, budget, name, phone, city, details, images }).catch((error) => {
     console.error("Failed to send order email:", error);
-    return NextResponse.json(
-      { error: "تعذّر إرسال الطلب حالياً، يرجى المحاولة مرة أخرى لاحقاً." },
-      { status: 502 }
-    );
-  }
+  });
 
   return NextResponse.json({ ok: true });
 }
