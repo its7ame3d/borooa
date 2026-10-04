@@ -53,7 +53,10 @@ export default function OrderModal({ open, initialCraft, onClose }: Props) {
 
   useEffect(() => {
     const preventScroll = (e: TouchEvent) => {
-      e.preventDefault();
+      const target = e.target as Element;
+      if (!target.closest("[data-modal-content]")) {
+        e.preventDefault();
+      }
     };
 
     if (open) {
@@ -134,7 +137,7 @@ export default function OrderModal({ open, initialCraft, onClose }: Props) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-6 shadow-xl sm:p-8">
+      <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-6 shadow-xl sm:p-8" data-modal-content>
         {submitted ? (
           <div className="flex flex-col items-center py-8 text-center">
             <h2 className="text-2xl font-black text-gray-900">تم استلام طلبك!</h2>
