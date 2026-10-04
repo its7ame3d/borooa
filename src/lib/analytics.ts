@@ -1,6 +1,11 @@
-// TODO: replace with the real Google Ads conversion ID once the account is set up
-// (Google Ads > Tools > Conversions > your action > "Tag setup" > "Install the tag yourself").
-export const GOOGLE_ADS_ID = "AW-XXXXXXXXX";
+// Google Ads conversion ID (Account ID: 565-107-1715)
+export const GOOGLE_ADS_ID = "AW-5651071715";
+export const GOOGLE_ADS_CONVERSION_LABEL = "CONVERSION_LABEL_PENDING";
+// TODO: Get conversion label from Google Ads:
+// 1. Go to Google Ads > Tools & Settings > Conversions > Create Conversion Action
+// 2. Choose "Website" and name it "Order Submission"
+// 3. Copy the conversion label from "Tag setup" page
+// 4. Replace CONVERSION_LABEL_PENDING with the actual label
 
 declare global {
   interface Window {
@@ -22,6 +27,8 @@ function trackEvent(name: string, params: Record<string, unknown> = {}) {
 export function trackOrderSubmitted({ craft, budget }: { craft: string | null; budget: string | null }) {
   trackEvent("generate_lead", { craft, budget });
 
-  // TODO: once you have a conversion label from Google Ads, uncomment:
-  // trackEvent("conversion", { send_to: `${GOOGLE_ADS_ID}/REPLACE_WITH_CONVERSION_LABEL` });
+  // Track Google Ads conversion (once conversion label is set)
+  if (GOOGLE_ADS_CONVERSION_LABEL !== "CONVERSION_LABEL_PENDING") {
+    trackEvent("conversion", { send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABEL}` });
+  }
 }
