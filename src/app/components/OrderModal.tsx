@@ -56,7 +56,10 @@ export default function OrderModal({ open, initialCraft, onClose }: Props) {
   useEffect(() => {
     const preventScroll = (e: TouchEvent) => {
       const target = e.target as Element;
-      if (!target.closest("[data-modal-content]")) {
+      const modalContent = target.closest("[data-modal-content]");
+      const isScrollable = modalContent && modalContent.scrollHeight > modalContent.clientHeight;
+
+      if (!modalContent || !isScrollable) {
         e.preventDefault();
       }
     };
