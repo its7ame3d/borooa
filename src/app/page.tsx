@@ -51,7 +51,7 @@ export default function Home() {
           امتلكي فنّك
         </h1>
         <p className="mt-6 max-w-xl text-[2rem] leading-8 text-gray-500">
-          اطلبي منتج يُصنع لك يدوياً من حرفيات بارعات
+          اطلبي منتجات مصنوعة يدوياً من حرفيات بارعات
         </p>
         <button
           type="button"
