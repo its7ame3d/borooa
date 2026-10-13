@@ -58,7 +58,7 @@ export default function Home() {
           onClick={() => openModal(null)}
           className="mt-10 w-full max-w-lg rounded-xl bg-pink-600 px-10 py-4 text-lg font-bold text-white transition-colors hover:bg-pink-700"
         >
-          صممي طلبك الآن
+          شاركينا فكرتك الآن
         </button>
 
         <div className="mt-20 grid w-full max-w-3xl grid-cols-2 gap-6 sm:grid-cols-4">
