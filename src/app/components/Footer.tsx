@@ -27,6 +27,9 @@ export default function Footer() {
               {craft.name}
             </Link>
           ))}
+          <Link href="/blog" className="text-sm text-gray-400 hover:text-white">
+            المدونة
+          </Link>
         </div>
 
         <div className="flex flex-col items-center gap-3 sm:items-start">
