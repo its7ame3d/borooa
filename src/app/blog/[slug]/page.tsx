@@ -162,7 +162,7 @@ export default async function BlogPostPage({
         </article>
 
         <div className="mt-16 flex w-full flex-col items-center">
-          <CraftOrderButton craft={post.craft} label="شاركينا فكرتك الآن" />
+          <CraftOrderButton craft={post.craft} label="اطلبي الآن" />
         </div>
 
         {others.length > 0 && (
