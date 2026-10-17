@@ -1,6 +1,7 @@
 import type { Locale } from "../../components/OrderModal";
 
 type Item = { title: string; text: string };
+type UseItem = Item & { alt: string };
 
 export type SeagrassCopy = {
   colorJoin: string;
@@ -11,6 +12,7 @@ export type SeagrassCopy = {
   ctaOrder: string;
   ctaB2B: string;
   trust: string[];
+  gallerySeoTitle: string;
   galleryTitle: string;
   gallerySub: string;
   all: string;
@@ -20,11 +22,13 @@ export type SeagrassCopy = {
   hintMobile: string;
   orderLike: string;
   prefill: (name: string, colors: string) => string;
+  detailsSeoTitle: string;
   detailsTitle: string;
   detailsText: string;
   detailsAlt: string;
+  usesSeoTitle: string;
   usesTitle: string;
-  uses: Item[];
+  uses: UseItem[];
   orderNow: string;
   b2bEyebrow: string;
   b2bTitle: [string, string];
@@ -44,13 +48,19 @@ export type SeagrassCopy = {
 export const COPY: Record<Locale, SeagrassCopy> = {
   ar: {
     colorJoin: " و",
-    heroAlts: ["حقيبة خوص عنابية", "سلة خوص خضراء", "علبة خوص بغطاء", "سلة خوص بنفسجية صغيرة"],
+    heroAlts: [
+      "حقيبة خوص يدوية عنابية بمقابض منسوجة",
+      "سلة خوص يدوية خضراء بمقابض من الحبل",
+      "علبة خوص يدوية بغطاء منسوج",
+      "سلة خوص صغيرة يدوية بحافة بنفسجية",
+    ],
     eyebrow: "خوصيات بروع",
     h1: ["خوصيات منسوجة", "بأيدٍ سعودية"],
     sub: "سلال وحقائب وصوانٍ تُنسج يدوياً من سعف النخيل، بالألوان التي تختارينها — لبيتك، لهديتك، أو لمشروعك.",
     ctaOrder: "اطلبي قطعتك",
     ctaB2B: "للشركات والجملة",
     trust: ["نسج يدوي بالكامل", "ألوان ومقاسات حسب الطلب", "للأفراد والشركات"],
+    gallerySeoTitle: "سلال وحقائب خوص منسوجة يدوياً",
     galleryTitle: "اختاري لونك",
     gallerySub: "قطع حقيقية من أعمال حرفياتنا. اطلبي مثلها، أو اختاري ألوانك ومقاسك الخاص.",
     all: "الكل",
@@ -60,19 +70,37 @@ export const COPY: Record<Locale, SeagrassCopy> = {
     hintMobile: "اضغطي على السلة لتشاهدي نقشة القاعدة من الأعلى.",
     orderLike: "اطلبي مثلها",
     prefill: (name, colors) => `أرغب بقطعة مثل: ${name}${colors ? ` (${colors})` : ""}.\nالحجم والاستخدام: `,
+    detailsSeoTitle: "كيف يُنسج الخوص",
     detailsTitle: "الجمال في التفاصيل",
     detailsText:
       "كل قطعة تبدأ بسعف نخيل يُصبغ ويُجدل شريطاً شريطاً، ثم يُخاط بعضه إلى بعض حتى تكتمل. لهذا لا توجد قطعتان متطابقتان تماماً.",
     detailsAlt: "قاعدة سلة خوص منسوجة بنقشة متعرجة من الأعلى",
+    usesSeoTitle: "استخدامات سلال الخوص في البيت",
     usesTitle: "قطعة واحدة، استخدامات كثيرة",
     uses: [
-      { title: "تخزين أنيق", text: "للبطانيات والألعاب والمناشف، بدل الصناديق البلاستيكية." },
-      { title: "غطاء لأصيص النباتات", text: "تضيف دفئاً لزوايا البيت وتخفي الأصيص العادي." },
-      { title: "مشوار السوق والبحر", text: "حقيبة خفيفة تلفت الأنظار أينما ذهبتِ." },
-      { title: "ضيافة التمر والقهوة", text: "طبق تقديم بروح المجالس السعودية." },
+      {
+        title: "تخزين أنيق",
+        text: "للبطانيات والألعاب والمناشف، بدل الصناديق البلاستيكية.",
+        alt: "سلة خوص يدوية لتخزين البطانيات والألعاب",
+      },
+      {
+        title: "غطاء لأصيص النباتات",
+        text: "تضيف دفئاً لزوايا البيت وتخفي الأصيص العادي.",
+        alt: "سلة خوص صغيرة تُستخدم غطاءً لأصيص النباتات",
+      },
+      {
+        title: "مشوار السوق والبحر",
+        text: "حقيبة خفيفة تلفت الأنظار أينما ذهبتِ.",
+        alt: "حقيبة خوص يدوية للسوق والبحر",
+      },
+      {
+        title: "ضيافة التمر والقهوة",
+        text: "طبق تقديم بروح المجالس السعودية.",
+        alt: "طبق خوص لتقديم التمر والقهوة",
+      },
     ],
     orderNow: "اطلبي الآن",
-    b2bEyebrow: "للشركات والجملة",
+    b2bEyebrow: "خوصيات للشركات والفنادق والجملة",
     b2bTitle: ["لمسة سعودية أصيلة", "يتذكرها ضيوفكم وعملاؤكم"],
     b2bText:
       "ننسج لكم قطع الخوص بالكميات والألوان التي تناسب مشروعكم، من الضيافة إلى التغليف والهدايا. ولأن كل قطعة تُنسج يدوياً، نحدد معكم المدة حسب الكمية.",
@@ -93,19 +121,25 @@ export const COPY: Record<Locale, SeagrassCopy> = {
       { title: "نتفق على التفاصيل", text: "الألوان والمقاسات والمدة المناسبة للكمية." },
       { title: "تُنسج القطع يدوياً", text: "تعمل الحرفيات على طلبكم حسب ما اتفقنا عليه." },
     ],
-    faqTitle: "أسئلة شائعة",
+    faqTitle: "أسئلة شائعة عن الخوصيات",
     finalTitle: "عندك فكرة لقطعة خوص؟",
     finalText: "شاركينا اللون والمقاس والاستخدام، وتبدأ الحرفية بنسجها لك.",
   },
   en: {
     colorJoin: " & ",
-    heroAlts: ["Maroon palm-leaf tote", "Green palm-leaf basket", "Lidded palm-leaf box", "Small purple palm-leaf basket"],
+    heroAlts: [
+      "Handwoven maroon palm-leaf tote with woven handles",
+      "Handwoven green palm-leaf basket with rope handles",
+      "Handwoven palm-leaf box with a woven lid",
+      "Small handwoven palm-leaf basket with a purple rim",
+    ],
     eyebrow: "Borooa palm-leaf weaving",
     h1: ["Palm-leaf weaving,", "handmade in Saudi Arabia"],
     sub: "Baskets, bags and trays woven by hand from palm fronds (khoos), in the colors you choose — for your home, as a gift, or for your business.",
     ctaOrder: "Order your piece",
     ctaB2B: "For businesses & wholesale",
     trust: ["Fully handwoven", "Custom colors & sizes", "For individuals and businesses"],
+    gallerySeoTitle: "Handwoven palm-leaf baskets & bags",
     galleryTitle: "Pick your color",
     gallerySub: "Real pieces made by our artisans. Order one like it, or choose your own colors and size.",
     all: "All",
@@ -115,19 +149,37 @@ export const COPY: Record<Locale, SeagrassCopy> = {
     hintMobile: "Tap a basket to see its woven base from above.",
     orderLike: "Order one like this",
     prefill: (name, colors) => `I'd like a piece like: ${name}${colors ? ` (${colors})` : ""}.\nSize and use: `,
+    detailsSeoTitle: "How palm-leaf (khoos) weaving is made",
     detailsTitle: "Beauty in the details",
     detailsText:
       "Every piece starts as palm fronds that are dyed and braided strip by strip, then stitched together until the shape is complete. That's why no two pieces are exactly alike.",
     detailsAlt: "Top view of a palm-leaf basket base woven in a zigzag pattern",
+    usesSeoTitle: "Ways to use palm-leaf baskets at home",
     usesTitle: "One piece, many uses",
     uses: [
-      { title: "Beautiful storage", text: "For blankets, toys and towels, instead of plastic boxes." },
-      { title: "Plant pot cover", text: "Adds warmth to a corner and hides a plain pot." },
-      { title: "Market & beach bag", text: "A light bag that turns heads wherever you go." },
-      { title: "Dates & coffee service", text: "A serving tray with the spirit of a Saudi majlis." },
+      {
+        title: "Beautiful storage",
+        text: "For blankets, toys and towels, instead of plastic boxes.",
+        alt: "Handwoven palm-leaf storage basket for blankets and toys",
+      },
+      {
+        title: "Plant pot cover",
+        text: "Adds warmth to a corner and hides a plain pot.",
+        alt: "Small palm-leaf basket used as a plant pot cover",
+      },
+      {
+        title: "Market & beach bag",
+        text: "A light bag that turns heads wherever you go.",
+        alt: "Handwoven palm-leaf tote for the market and beach",
+      },
+      {
+        title: "Dates & coffee service",
+        text: "A serving tray with the spirit of a Saudi majlis.",
+        alt: "Palm-leaf tray for serving dates and coffee",
+      },
     ],
     orderNow: "Order now",
-    b2bEyebrow: "For businesses & wholesale",
+    b2bEyebrow: "Palm-leaf weaving for businesses, hotels & wholesale",
     b2bTitle: ["An authentic Saudi touch", "your guests and clients will remember"],
     b2bText:
       "We weave palm-leaf pieces in the quantities and colors your project needs, from hospitality to packaging and gifts. Because every piece is woven by hand, we agree the timeline with you based on quantity.",
@@ -148,7 +200,7 @@ export const COPY: Record<Locale, SeagrassCopy> = {
       { title: "We agree on the details", text: "Colors, sizes, and a timeline that fits the quantity." },
       { title: "Your pieces are handwoven", text: "Our artisans make your order as agreed." },
     ],
-    faqTitle: "Frequently asked questions",
+    faqTitle: "Palm-leaf weaving FAQs",
     finalTitle: "Have an idea for a palm-leaf piece?",
     finalText: "Tell us the color, size and use, and an artisan will weave it for you.",
   },

@@ -74,28 +74,66 @@ export default function SeagrassPageView({ locale }: { locale: Locale }) {
   const faqs = en ? FAQS_EN : craft.faqs;
   const url = URLS[locale];
 
+  const org = { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: m.siteName, url: SITE_URL };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: m.title,
+        description: m.description,
+        inLanguage: locale,
+        primaryImageOfPage: `${SITE_URL}${craft.image}`,
+        hasPart: [
+          { "@type": "WebPageElement", name: en ? "Handwoven palm-leaf baskets & bags" : "سلال وحقائب خوص منسوجة يدوياً", url: `${url}#collection` },
+          { "@type": "WebPageElement", name: en ? "How palm-leaf weaving is made" : "كيف يُنسج الخوص", url: `${url}#how-its-made` },
+          { "@type": "WebPageElement", name: en ? "Ways to use palm-leaf baskets" : "استخدامات سلال الخوص", url: `${url}#uses` },
+          { "@type": "WebPageElement", name: en ? "For businesses & wholesale" : "للشركات والجملة", url: `${url}#b2b` },
+          { "@type": "WebPageElement", name: en ? "FAQs" : "أسئلة شائعة", url: `${url}#faq` },
+        ],
+      },
+      {
         "@type": "Service",
         name: m.name,
+        serviceType: en ? "Custom handwoven palm-leaf products" : "منتجات خوص مخصصة منسوجة يدوياً",
         description: m.description,
         url,
         inLanguage: locale,
-        provider: { "@type": "Organization", name: m.siteName, url: SITE_URL },
-        areaServed: "SA",
-        audience: [{ "@type": "PeopleAudience" }, { "@type": "BusinessAudience" }],
+        provider: org,
+        areaServed: { "@type": "Country", name: "Saudi Arabia" },
+        audience: { "@type": "PeopleAudience" },
+      },
+      {
+        "@type": "Service",
+        name: en ? "Palm-leaf weaving for businesses, hotels & wholesale" : "خوصيات للشركات والفنادق والجملة",
+        serviceType: en ? "Wholesale and corporate handwoven palm-leaf products" : "منتجات خوص بالجملة وللشركات",
+        description: en
+          ? "Handwoven palm-leaf baskets, trays and bags in custom quantities and colors for hotels, cafés, corporate gifts, retail packaging and events."
+          : "سلال وصوانٍ وحقائب خوص منسوجة يدوياً بكميات وألوان حسب الطلب للفنادق والمقاهي وهدايا الشركات وتغليف المتاجر والمناسبات.",
+        url: `${url}#b2b`,
+        inLanguage: locale,
+        provider: org,
+        areaServed: { "@type": "Country", name: "Saudi Arabia" },
+        audience: { "@type": "BusinessAudience" },
       },
       {
         "@type": "ImageGallery",
-        name: en ? "Borooa palm-leaf weaving" : "أعمال خوصيات بروع",
-        url,
-        image: PRODUCTS.map((p) => ({
-          "@type": "ImageObject",
-          contentUrl: `${SITE_URL}${p.image}`,
-          caption: en ? p.altEn : p.alt,
-        })),
+        name: en ? "Borooa handwoven palm-leaf baskets and bags" : "سلال وحقائب خوص يدوية من بروع",
+        url: `${url}#collection`,
+        image: PRODUCTS.flatMap((p) =>
+          [p.image, p.topImage].filter(Boolean).map((src) => ({
+            "@type": "ImageObject",
+            contentUrl: `${SITE_URL}${src}`,
+            name: en ? p.nameEn : p.name,
+            caption: en ? p.altEn : p.alt,
+            creator: org,
+            creditText: m.siteName,
+            copyrightNotice: m.siteName,
+          }))
+        ),
       },
       {
         "@type": "BreadcrumbList",

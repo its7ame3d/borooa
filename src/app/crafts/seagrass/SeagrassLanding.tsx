@@ -47,13 +47,12 @@ function ProductCard({
   copy: SeagrassCopy;
   onOrder: (p: Product) => void;
 }) {
-  const colors = colorLabels(product, locale, copy);
   const name = locale === "en" ? product.nameEn : product.name;
   const alt = locale === "en" ? product.altEn : product.alt;
   const sizes = featured ? "(min-width: 640px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw";
 
   return (
-    <div className={`group flex flex-col ${featured ? "sm:col-span-2 sm:row-span-2" : ""}`}>
+    <li className={`group flex flex-col ${featured ? "sm:col-span-2 sm:row-span-2" : ""}`}>
       <div className="relative flex-1 overflow-hidden rounded-3xl bg-[#F5EEE3]">
         <div className={`relative w-full ${featured ? "aspect-square sm:aspect-auto sm:h-full sm:min-h-[28rem]" : "aspect-square"}`}>
           <Image
@@ -82,17 +81,17 @@ function ProductCard({
       <div className="mt-3 flex flex-col items-start gap-3 px-1">
         <div>
           <h3 className="font-bold leading-snug text-gray-900">{name}</h3>
-          {colors && <p className="mt-0.5 text-sm text-gray-500">{colors}</p>}
         </div>
         <button
           type="button"
           onClick={() => onOrder(product)}
+          aria-label={`${copy.orderLike}: ${name}`}
           className="w-full shrink-0 rounded-full border border-gray-900 px-4 py-1.5 text-sm font-bold text-gray-900 transition-colors hover:bg-gray-900 hover:text-white sm:w-auto"
         >
           {copy.orderLike}
         </button>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -170,9 +169,12 @@ export default function SeagrassLanding({
       </section>
 
       {/* Collection with color filter */}
-      <section className="mx-auto w-full max-w-6xl px-6 py-20 sm:px-12">
+      <section id="collection" aria-labelledby="collection-heading" className="mx-auto w-full max-w-6xl scroll-mt-6 px-6 py-20 sm:px-12">
         <div className="flex flex-col items-center text-center">
-          <h2 className="text-3xl font-black text-gray-900 sm:text-4xl">{copy.galleryTitle}</h2>
+          <h2 id="collection-heading" className="text-sm font-bold tracking-wide text-pink-600">
+            {copy.gallerySeoTitle}
+          </h2>
+          <p className="mt-3 text-3xl font-black text-gray-900 sm:text-4xl">{copy.galleryTitle}</p>
           <p className="mt-4 max-w-xl text-lg text-gray-500">{copy.gallerySub}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-2" role="group" aria-label={copy.filterLabel}>
             <button
@@ -202,7 +204,7 @@ export default function SeagrassLanding({
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
+        <ul role="list" className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
           {visible.map((p, i) => (
             <ProductCard
               key={p.id}
@@ -213,7 +215,7 @@ export default function SeagrassLanding({
               onOrder={orderLike}
             />
           ))}
-        </div>
+        </ul>
         <p className="mt-10 text-center text-sm text-gray-400">
           <span className="hidden sm:inline">{copy.hintDesktop}</span>
           <span className="sm:hidden">{copy.hintMobile}</span>
@@ -221,7 +223,7 @@ export default function SeagrassLanding({
       </section>
 
       {/* Craft details */}
-      <section className="bg-gray-50">
+      <section id="how-its-made" aria-labelledby="how-its-made-heading" className="scroll-mt-6 bg-gray-50">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 sm:px-12 lg:grid-cols-2">
           <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden rounded-3xl bg-white">
             <Image
@@ -233,22 +235,28 @@ export default function SeagrassLanding({
             />
           </div>
           <div className="text-start">
-            <h2 className="text-3xl font-black text-gray-900 sm:text-4xl">{copy.detailsTitle}</h2>
+            <h2 id="how-its-made-heading" className="text-sm font-bold tracking-wide text-pink-600">
+              {copy.detailsSeoTitle}
+            </h2>
+            <p className="mt-3 text-3xl font-black text-gray-900 sm:text-4xl">{copy.detailsTitle}</p>
             <p className="mt-4 text-lg leading-8 text-gray-600">{copy.detailsText}</p>
           </div>
         </div>
       </section>
 
       {/* Home uses (B2C) */}
-      <section className="mx-auto w-full max-w-6xl px-6 py-20 sm:px-12">
-        <h2 className="text-center text-3xl font-black text-gray-900 sm:text-4xl">{copy.usesTitle}</h2>
+      <section id="uses" aria-labelledby="uses-heading" className="mx-auto w-full max-w-6xl scroll-mt-6 px-6 py-20 text-center sm:px-12">
+        <h2 id="uses-heading" className="text-sm font-bold tracking-wide text-pink-600">
+          {copy.usesSeoTitle}
+        </h2>
+        <p className="mt-3 text-3xl font-black text-gray-900 sm:text-4xl">{copy.usesTitle}</p>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {copy.uses.map((u, i) => (
             <div key={u.title} className="flex flex-col overflow-hidden rounded-3xl border border-gray-100">
               <div className="relative aspect-[4/3] bg-[#F5EEE3]">
                 <Image
                   src={USE_IMAGES[i]}
-                  alt={u.title}
+                  alt={u.alt}
                   fill
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   className="object-contain p-5 mix-blend-multiply"
@@ -273,16 +281,18 @@ export default function SeagrassLanding({
       </section>
 
       {/* B2B */}
-      <section id="b2b" className="scroll-mt-6 bg-[#16302B] text-white">
+      <section id="b2b" aria-labelledby="b2b-heading" className="scroll-mt-6 bg-[#16302B] text-white">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:px-12">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="text-start">
-              <p className="text-sm font-bold tracking-wide text-pink-400">{copy.b2bEyebrow}</p>
-              <h2 className={`mt-4 text-3xl font-black leading-tight ${locale === "en" ? "sm:text-4xl" : "sm:text-5xl"}`}>
+              <h2 id="b2b-heading" className="text-sm font-bold tracking-wide text-pink-400">
+                {copy.b2bEyebrow}
+              </h2>
+              <p className={`mt-4 text-3xl font-black leading-tight ${locale === "en" ? "sm:text-4xl" : "sm:text-5xl"}`}>
                 {copy.b2bTitle[0]}
                 {locale === "en" ? " " : <br />}
                 {copy.b2bTitle[1]}
-              </h2>
+              </p>
               <p className="mt-6 text-lg leading-8 text-white/70">{copy.b2bText}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
@@ -343,8 +353,10 @@ export default function SeagrassLanding({
       </section>
 
       {/* FAQ */}
-      <section className="mx-auto w-full max-w-2xl px-6 py-20 text-start sm:px-0">
-        <h2 className="mb-8 text-center text-3xl font-black text-gray-900">{copy.faqTitle}</h2>
+      <section id="faq" aria-labelledby="faq-heading" className="mx-auto w-full max-w-2xl scroll-mt-6 px-6 py-20 text-start sm:px-0">
+        <h2 id="faq-heading" className="mb-8 text-center text-3xl font-black text-gray-900">
+          {copy.faqTitle}
+        </h2>
         <div className="flex flex-col divide-y divide-gray-100">
           {faqs.map((faq) => (
             <details key={faq.q} className="group py-5">
