@@ -5,13 +5,13 @@ import { CRAFTS, getCraftBySlug } from "../data";
 import BackButton from "../../components/BackButton";
 import Footer from "../../components/Footer";
 import type { Locale } from "../../components/OrderModal";
-import SeagrassLanding from "./SeagrassLanding";
+import KhoosLanding from "./KhoosLanding";
 import { PRODUCTS } from "./products";
 import { FAQS_EN } from "./copy";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 
-const craft = getCraftBySlug("seagrass")!;
-const URLS = { ar: `${SITE_URL}/crafts/seagrass`, en: `${SITE_URL}/en/crafts/seagrass` };
+const craft = getCraftBySlug("khoos")!;
+const URLS = { ar: `${SITE_URL}/crafts/khoos`, en: `${SITE_URL}/en/crafts/khoos` };
 
 const META = {
   ar: {
@@ -43,7 +43,7 @@ const META = {
   },
 };
 
-export function seagrassMetadata(locale: Locale): Metadata {
+export function khoosMetadata(locale: Locale): Metadata {
   const m = META[locale];
   const image = `${SITE_URL}${craft.image}`;
   return {
@@ -68,7 +68,7 @@ export function seagrassMetadata(locale: Locale): Metadata {
   };
 }
 
-export default function SeagrassPageView({ locale }: { locale: Locale }) {
+export default function KhoosPageView({ locale }: { locale: Locale }) {
   const en = locale === "en";
   const m = META[locale];
   const faqs = en ? FAQS_EN : craft.faqs;
@@ -165,7 +165,7 @@ export default function SeagrassPageView({ locale }: { locale: Locale }) {
           <Image src="/logo.svg" alt={m.siteName} width={72} height={36} className="h-9 w-auto" priority />
         </Link>
         <Link
-          href={en ? "/crafts/seagrass" : "/en/crafts/seagrass"}
+          href={en ? "/crafts/khoos" : "/en/crafts/khoos"}
           hrefLang={en ? "ar" : "en"}
           lang={en ? "ar" : "en"}
           className="absolute end-6 rounded-full border border-gray-200 px-3 py-1 text-sm font-bold text-gray-700 transition-colors hover:border-gray-900 sm:end-12"
@@ -175,7 +175,7 @@ export default function SeagrassPageView({ locale }: { locale: Locale }) {
       </nav>
 
       <main className="flex flex-1 flex-col">
-        <SeagrassLanding faqs={faqs} locale={locale} />
+        <KhoosLanding faqs={faqs} locale={locale} />
 
         {!en && (
           <div className="mx-auto flex w-full max-w-2xl flex-wrap justify-center gap-3 border-t border-gray-100 px-6 py-10">

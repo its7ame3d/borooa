@@ -3,7 +3,7 @@ import type { Locale } from "../../components/OrderModal";
 type Item = { title: string; text: string };
 type UseItem = Item & { alt: string };
 
-export type SeagrassCopy = {
+export type KhoosCopy = {
   colorJoin: string;
   heroAlts: string[];
   eyebrow: string;
@@ -45,7 +45,7 @@ export type SeagrassCopy = {
   finalText: string;
 };
 
-export const COPY: Record<Locale, SeagrassCopy> = {
+export const COPY: Record<Locale, KhoosCopy> = {
   ar: {
     colorJoin: " و",
     heroAlts: [

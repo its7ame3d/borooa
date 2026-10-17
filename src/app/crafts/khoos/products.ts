@@ -20,7 +20,7 @@ export type Product = {
   altEn: string;
 };
 
-const dir = "/crafts/seagrass";
+const dir = "/crafts/khoos";
 
 export const PRODUCTS: Product[] = [
   {

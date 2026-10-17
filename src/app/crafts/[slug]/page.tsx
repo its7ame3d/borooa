@@ -9,7 +9,7 @@ import Footer from "../../components/Footer";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 
 export function generateStaticParams() {
-  return CRAFTS.filter((craft) => craft.slug !== "seagrass").map((craft) => ({ slug: craft.slug }));
+  return CRAFTS.filter((craft) => craft.slug !== "khoos").map((craft) => ({ slug: craft.slug }));
 }
 
 export async function generateMetadata({

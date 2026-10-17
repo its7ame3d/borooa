@@ -27,7 +27,7 @@ const categories = [
     alt: "سلة خوص",
     title: "اطلبي خوصيات",
     craft: "خوصيات",
-    slug: "seagrass",
+    slug: "khoos",
   },
 ];
 

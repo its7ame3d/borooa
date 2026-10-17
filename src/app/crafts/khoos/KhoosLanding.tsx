@@ -4,27 +4,27 @@ import { useState } from "react";
 import Image from "next/image";
 import OrderModal, { type Locale } from "../../components/OrderModal";
 import { COLORS, PRODUCTS, B2B_IMAGE, type ColorKey, type Product } from "./products";
-import { COPY, type SeagrassCopy } from "./copy";
+import { COPY, type KhoosCopy } from "./copy";
 
 // The order modal and emails use Arabic craft values regardless of page language.
 const CRAFT = "خوصيات";
 const WHATSAPP_NUMBER = "966579385204";
 
 const HERO = [
-  { src: "/crafts/seagrass/tote-maroon.webp", className: "right-0 top-0 w-[58%] rotate-[-4deg]" },
-  { src: "/crafts/seagrass/basket-green.webp", className: "left-0 top-[8%] w-[48%] rotate-[5deg]" },
-  { src: "/crafts/seagrass/lidded-box-green.webp", className: "left-[14%] bottom-0 w-[44%] rotate-[-3deg]" },
-  { src: "/crafts/seagrass/small-purple.webp", className: "right-[6%] bottom-[2%] w-[40%] rotate-[4deg]" },
+  { src: "/crafts/khoos/tote-maroon.webp", className: "right-0 top-0 w-[58%] rotate-[-4deg]" },
+  { src: "/crafts/khoos/basket-green.webp", className: "left-0 top-[8%] w-[48%] rotate-[5deg]" },
+  { src: "/crafts/khoos/lidded-box-green.webp", className: "left-[14%] bottom-0 w-[44%] rotate-[-3deg]" },
+  { src: "/crafts/khoos/small-purple.webp", className: "right-[6%] bottom-[2%] w-[40%] rotate-[4deg]" },
 ];
 
 const USE_IMAGES = [
-  "/crafts/seagrass/basket-maroon.webp",
-  "/crafts/seagrass/small-teal.webp",
-  "/crafts/seagrass/tote-green.webp",
-  "/crafts/seagrass/tray-yellow.webp",
+  "/crafts/khoos/basket-maroon.webp",
+  "/crafts/khoos/small-teal.webp",
+  "/crafts/khoos/tote-green.webp",
+  "/crafts/khoos/tray-yellow.webp",
 ];
 
-function colorLabels(product: Product, locale: Locale, copy: SeagrassCopy) {
+function colorLabels(product: Product, locale: Locale, copy: KhoosCopy) {
   return product.colors
     .map((c) => {
       const color = COLORS.find((x) => x.key === c);
@@ -44,7 +44,7 @@ function ProductCard({
   product: Product;
   featured: boolean;
   locale: Locale;
-  copy: SeagrassCopy;
+  copy: KhoosCopy;
   onOrder: (p: Product) => void;
 }) {
   const name = locale === "en" ? product.nameEn : product.name;
@@ -95,7 +95,7 @@ function ProductCard({
   );
 }
 
-export default function SeagrassLanding({
+export default function KhoosLanding({
   faqs,
   locale = "ar",
 }: {
@@ -227,7 +227,7 @@ export default function SeagrassLanding({
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 sm:px-12 lg:grid-cols-2">
           <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden rounded-3xl bg-white">
             <Image
-              src="/crafts/seagrass/basket-purple-top.webp"
+              src="/crafts/khoos/basket-purple-top.webp"
               alt={copy.detailsAlt}
               fill
               sizes="(min-width: 1024px) 448px, 100vw"

@@ -12,10 +12,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     {
-      url: `${SITE_URL}/en/crafts/seagrass`,
+      url: `${SITE_URL}/en/crafts/khoos`,
       changeFrequency: "weekly",
       priority: 0.8,
-      alternates: { languages: { ar: `${SITE_URL}/crafts/seagrass`, en: `${SITE_URL}/en/crafts/seagrass` } },
+      alternates: { languages: { ar: `${SITE_URL}/crafts/khoos`, en: `${SITE_URL}/en/crafts/khoos` } },
     },
     { url: `${SITE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },
     ...POSTS.map((post) => ({

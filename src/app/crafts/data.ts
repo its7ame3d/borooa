@@ -132,7 +132,7 @@ export const CRAFTS: Craft[] = [
     ],
   },
   {
-    slug: "seagrass",
+    slug: "khoos",
     name: "خوصيات",
     title: "سلال وحقائب خوص يدوية للأفراد والشركات | بروع",
     description:
@@ -172,7 +172,7 @@ export const CRAFTS: Craft[] = [
         a: "يمكن اختيار ألوان قريبة من هوية علامتكم ضمن الألوان المتاحة للصبغ، وسنؤكد معكم الخيارات قبل بدء التنفيذ.",
       },
     ],
-    image: "/crafts/seagrass/tote-maroon.webp",
+    image: "/crafts/khoos/tote-maroon.webp",
     imageAlt: "حقيبة خوص عنابية منسوجة يدوياً",
     keywords: [
       "سلة خوص مخصصة",

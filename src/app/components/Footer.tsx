@@ -9,6 +9,8 @@ const SOCIAL = {
   email: "hello@borooa.com",
 };
 
+const CR_NUMBER = "7049871358";
+
 export default function Footer({ locale = "ar" }: { locale?: Locale }) {
   const en = locale === "en";
 
@@ -28,7 +30,7 @@ export default function Footer({ locale = "ar" }: { locale?: Locale }) {
           <h3 className="text-sm font-bold text-gray-300">{en ? "Quick links" : "روابط سريعة"}</h3>
           {en ? (
             <>
-              <Link href="/en/crafts/seagrass" className="text-sm text-gray-400 hover:text-white">
+              <Link href="/en/crafts/khoos" className="text-sm text-gray-400 hover:text-white">
                 Palm-leaf weaving
               </Link>
               <Link href="/" className="text-sm text-gray-400 hover:text-white" lang="ar">
@@ -70,8 +72,25 @@ export default function Footer({ locale = "ar" }: { locale?: Locale }) {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 max-w-5xl border-t border-white/10 pt-6 text-center text-xs text-gray-500">
-        © {new Date().getFullYear()} {en ? "Borooa. All rights reserved." : "بروع. جميع الحقوق محفوظة."}
+      <div className="mx-auto mt-12 flex max-w-5xl flex-col items-center gap-6 border-t border-white/10 pt-6 sm:flex-row sm:justify-between">
+        <div className="flex items-center gap-3">
+          <Image
+            src="/ministry-of-commerce-white.svg"
+            alt={en ? "Ministry of Commerce" : "وزارة التجارة"}
+            width={44}
+            height={45}
+            className="h-11 w-auto"
+          />
+          <div className="text-start text-xs leading-5">
+            <p className="text-gray-400">{en ? "Commercial Registration No." : "السجل التجاري"}</p>
+            <p className="font-bold tracking-wide text-gray-200" dir="ltr">
+              {CR_NUMBER}
+            </p>
+          </div>
+        </div>
+        <p className="text-center text-xs text-gray-500">
+          © {new Date().getFullYear()} {en ? "Borooa. All rights reserved." : "بروع. جميع الحقوق محفوظة."}
+        </p>
       </div>
     </footer>
   );
