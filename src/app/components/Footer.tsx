@@ -59,7 +59,7 @@ export default function Footer({ locale = "ar" }: { locale?: Locale }) {
         </div>
 
         <div className="flex flex-col items-center gap-3 sm:items-start">
-          <h3 className="text-sm font-bold text-gray-300">{en ? "Contact us" : "تواصلي معنا"}</h3>
+          <h3 className="text-sm font-bold text-gray-300">{en ? "Contact us" : "تواصل معنا"}</h3>
           <a href={`mailto:${SOCIAL.email}`} className="text-sm text-gray-400 hover:text-white" dir="ltr">
             {SOCIAL.email}
           </a>

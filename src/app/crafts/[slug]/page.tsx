@@ -118,7 +118,7 @@ export default async function CraftPage({
         <p className="mt-6 max-w-xl text-xl leading-8 text-gray-500">{craft.intro}</p>
 
         <div className="mt-10">
-          <CraftOrderButton craft={craft.name} label={`اطلبي ${craft.name}`} />
+          <CraftOrderButton craft={craft.name} label={`اطلب ${craft.name}`} />
         </div>
 
         <div className="relative mt-16 aspect-video w-full max-w-2xl overflow-hidden rounded-2xl border border-gray-200">
@@ -161,7 +161,7 @@ export default async function CraftPage({
         </div>
 
         <div className="mt-16">
-          <CraftOrderButton craft={craft.name} label={`اطلبي ${craft.name} الآن`} />
+          <CraftOrderButton craft={craft.name} label={`اطلب ${craft.name} الآن`} />
         </div>
 
         <div className="mt-16 flex w-full max-w-2xl flex-wrap justify-center gap-3 border-t border-gray-100 pt-10">

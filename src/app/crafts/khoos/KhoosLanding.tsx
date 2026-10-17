@@ -11,10 +11,10 @@ const CRAFT = "خوصيات";
 const WHATSAPP_NUMBER = "966579385204";
 
 const HERO = [
-  { src: "/crafts/khoos/tote-maroon.webp", className: "right-0 top-0 w-[58%] rotate-[-4deg]" },
-  { src: "/crafts/khoos/basket-green.webp", className: "left-0 top-[8%] w-[48%] rotate-[5deg]" },
-  { src: "/crafts/khoos/lidded-box-green.webp", className: "left-[14%] bottom-0 w-[44%] rotate-[-3deg]" },
-  { src: "/crafts/khoos/small-purple.webp", className: "right-[6%] bottom-[2%] w-[40%] rotate-[4deg]" },
+  { src: "/crafts/khoos/tote-maroon.webp", pos: "right-0 top-0 w-[58%]", rotate: "rotate-[-4deg]" },
+  { src: "/crafts/khoos/basket-green.webp", pos: "left-0 top-[8%] w-[48%]", rotate: "rotate-[5deg]" },
+  { src: "/crafts/khoos/lidded-box-green.webp", pos: "left-[14%] bottom-0 w-[44%]", rotate: "rotate-[-3deg]" },
+  { src: "/crafts/khoos/small-purple.webp", pos: "right-[6%] bottom-[2%] w-[40%]", rotate: "rotate-[4deg]" },
 ];
 
 const USE_IMAGES = [
@@ -47,6 +47,7 @@ function ProductCard({
   copy: KhoosCopy;
   onOrder: (p: Product) => void;
 }) {
+  const [showTop, setShowTop] = useState(false);
   const name = locale === "en" ? product.nameEn : product.name;
   const alt = locale === "en" ? product.altEn : product.alt;
   const sizes = featured ? "(min-width: 640px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw";
@@ -54,14 +55,19 @@ function ProductCard({
   return (
     <li className={`group flex flex-col ${featured ? "sm:col-span-2 sm:row-span-2" : ""}`}>
       <div className="relative flex-1 overflow-hidden rounded-3xl bg-[#F5EEE3]">
-        <div className={`relative w-full ${featured ? "aspect-square sm:aspect-auto sm:h-full sm:min-h-[28rem]" : "aspect-square"}`}>
+        <div
+          className={`relative w-full ${featured ? "aspect-square sm:aspect-auto sm:h-full sm:min-h-[28rem]" : "aspect-square"} ${
+            product.topImage ? "cursor-pointer" : ""
+          }`}
+          onClick={product.topImage ? () => setShowTop((v) => !v) : undefined}
+        >
           <Image
             src={product.image}
             alt={alt}
             fill
             sizes={sizes}
             className={`object-contain p-6 mix-blend-multiply transition duration-500 group-hover:scale-105 ${
-              product.topImage ? "group-hover:opacity-0" : ""
+              product.topImage ? (showTop ? "opacity-0" : "group-hover:opacity-0") : ""
             }`}
           />
           {product.topImage && (
@@ -70,7 +76,9 @@ function ProductCard({
               alt={`${alt}${copy.topSuffix}`}
               fill
               sizes={sizes}
-              className="object-contain p-6 opacity-0 mix-blend-multiply transition duration-500 group-hover:opacity-100"
+              className={`object-contain p-6 mix-blend-multiply transition duration-500 ${
+                showTop ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+              }`}
             />
           )}
         </div>
@@ -105,6 +113,7 @@ export default function KhoosLanding({
   const copy = COPY[locale];
   const [modal, setModal] = useState<{ open: boolean; details: string }>({ open: false, details: "" });
   const [color, setColor] = useState<ColorKey | "all">("all");
+  const [activeHero, setActiveHero] = useState<number | null>(null);
 
   const openOrder = (details = "") => setModal({ open: true, details });
   const orderLike = (p: Product) =>
@@ -150,9 +159,14 @@ export default function KhoosLanding({
 
           <div className="relative mx-auto aspect-square w-full max-w-lg">
             {HERO.map((img, i) => (
-              <div
+              <button
                 key={img.src}
-                className={`absolute aspect-[3/4] overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-black/5 transition-transform duration-500 hover:z-10 hover:rotate-0 hover:scale-105 ${img.className}`}
+                type="button"
+                onClick={() => setActiveHero((a) => (a === i ? null : i))}
+                aria-pressed={activeHero === i}
+                className={`absolute block aspect-[3/4] cursor-pointer overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-black/5 transition-transform duration-500 ${img.pos} ${
+                  activeHero === i ? "z-10 rotate-0 scale-105" : `${img.rotate} hover:z-10 hover:rotate-0 hover:scale-105`
+                }`}
               >
                 <Image
                   src={img.src}
@@ -162,7 +176,7 @@ export default function KhoosLanding({
                   className="object-contain p-4"
                   priority={i < 2}
                 />
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -372,13 +386,13 @@ export default function KhoosLanding({
 
       {/* Final CTA */}
       <section className="px-6 pb-20 sm:px-12">
-        <div className="mx-auto flex max-w-4xl flex-col items-center rounded-3xl bg-pink-600 px-6 py-14 text-center text-white">
-          <h2 className="text-3xl font-black sm:text-4xl">{copy.finalTitle}</h2>
-          <p className="mt-4 max-w-md text-lg text-white/85">{copy.finalText}</p>
+        <div className="mx-auto flex max-w-4xl flex-col items-center rounded-3xl bg-[#F5EEE3] px-6 py-14 text-center">
+          <h2 className="text-3xl font-black text-gray-900 sm:text-4xl">{copy.finalTitle}</h2>
+          <p className="mt-4 max-w-md text-lg text-gray-600">{copy.finalText}</p>
           <button
             type="button"
             onClick={() => openOrder()}
-            className="mt-8 w-full max-w-xs rounded-xl bg-white px-10 py-4 text-lg font-bold text-pink-600 transition-colors hover:bg-pink-50"
+            className="mt-8 w-full max-w-xs rounded-xl bg-white px-10 py-4 text-lg font-bold text-gray-900 shadow-sm transition-colors hover:bg-gray-50"
           >
             {copy.orderNow}
           </button>

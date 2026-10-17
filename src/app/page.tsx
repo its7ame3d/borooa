@@ -7,25 +7,25 @@ import OrderModal from "./components/OrderModal";
 import Footer from "./components/Footer";
 
 const categories = [
-  { src: "/categories/khoos.jpg", alt: "أعمال الكروشيه", title: "اطلبي دمية", craft: "دمى", slug: "dolls" },
+  { src: "/categories/khoos.jpg", alt: "أعمال الكروشيه", title: "اطلب دمية", craft: "دمى", slug: "dolls" },
   {
     src: "/categories/ceramics.jpg",
     alt: "أكواب السيراميك",
-    title: "اطلبي كوب فخاري",
+    title: "اطلب كوب فخاري",
     craft: "خزف وفخار",
     slug: "ceramics",
   },
   {
     src: "/categories/crochet.jpg",
     alt: "مربعات الكروشيه",
-    title: "اطلبي كروشيه",
+    title: "اطلب كروشيه",
     craft: "كروشيه",
     slug: "crochet",
   },
   {
     src: "/categories/khoosiyat.jpg",
     alt: "سلة خوص",
-    title: "اطلبي خوصيات",
+    title: "اطلب خوصيات",
     craft: "خوصيات",
     slug: "khoos",
   },
@@ -48,17 +48,17 @@ export default function Home() {
 
       <main className="flex flex-1 flex-col items-center px-6 py-24 text-center sm:px-12">
         <h1 className="text-5xl font-black leading-tight text-gray-900 sm:text-6xl">
-          امتلكي فنّك
+          امتلك فنّك
         </h1>
         <p className="mt-6 max-w-xl text-[2rem] leading-8 text-gray-500">
-          اطلبي منتجات مصنوعة يدوياً من حرفيات بارعات
+          اطلب منتجات مصنوعة يدوياً من حرفيات بارعات
         </p>
         <button
           type="button"
           onClick={() => openModal(null)}
           className="mt-10 w-full max-w-lg rounded-xl bg-pink-600 px-10 py-4 text-lg font-bold text-white transition-colors hover:bg-pink-700"
         >
-          اطلبي الآن
+          اطلب الآن
         </button>
 
         <div className="mt-20 grid w-full max-w-3xl grid-cols-2 gap-6 sm:grid-cols-4">

@@ -24,7 +24,7 @@ const adelleSans = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_NAME,
-  description: "اطلبي منتجات مصنوعة يدوياً من حرفيات بارعات: خزف وفخار، كروشيه، دمى، وخوصيات مخصصة.",
+  description: "اطلب منتجات مصنوعة يدوياً من حرفيات بارعات: خزف وفخار، كروشيه، دمى، وخوصيات مخصصة.",
   openGraph: {
     siteName: SITE_NAME,
     locale: "ar_SA",

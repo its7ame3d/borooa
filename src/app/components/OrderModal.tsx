@@ -23,7 +23,7 @@ const STRINGS = {
     step2Title: "بيانات التواصل",
     step: (n: number) => `الخطوة ${n} من 2`,
     craftLabel: "نوع الحرفة",
-    detailsLabel: "صفي لنا تفاصيل الطلب الذي ترغبين به",
+    detailsLabel: "صف لنا تفاصيل الطلب الذي ترغب به",
     detailsPlaceholder: "مثال: أرغب بكوب فخاري بلون ترابي مكتوب عليه اسمي...",
     imagesLabel: "صور مرجعية (اختياري)",
     removeImage: "إزالة الصورة",
