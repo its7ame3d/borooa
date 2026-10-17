@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-export default function BackButton() {
+export default function BackButton({ label = "العودة" }: { label?: string }) {
   const router = useRouter();
 
   return (
@@ -11,7 +11,7 @@ export default function BackButton() {
       onClick={() => router.back()}
       className="text-base font-medium text-gray-700 transition-colors hover:text-gray-900"
     >
-      العودة
+      {label}
     </button>
   );
 }

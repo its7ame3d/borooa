@@ -11,6 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
+    {
+      url: `${SITE_URL}/en/crafts/seagrass`,
+      changeFrequency: "weekly",
+      priority: 0.8,
+      alternates: { languages: { ar: `${SITE_URL}/crafts/seagrass`, en: `${SITE_URL}/en/crafts/seagrass` } },
+    },
     { url: `${SITE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },
     ...POSTS.map((post) => ({
       url: `${SITE_URL}/blog/${post.slug}`,
