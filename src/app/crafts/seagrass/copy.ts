@@ -15,8 +15,6 @@ export type SeagrassCopy = {
   gallerySub: string;
   all: string;
   filterLabel: string;
-  viewTop: string;
-  viewSide: string;
   topSuffix: string;
   hintDesktop: string;
   hintMobile: string;
@@ -25,7 +23,6 @@ export type SeagrassCopy = {
   detailsTitle: string;
   detailsText: string;
   detailsAlt: string;
-  detailsPoints: Item[];
   usesTitle: string;
   uses: Item[];
   orderNow: string;
@@ -58,22 +55,15 @@ export const COPY: Record<Locale, SeagrassCopy> = {
     gallerySub: "قطع حقيقية من أعمال حرفياتنا. اطلبي مثلها، أو اختاري ألوانك ومقاسك الخاص.",
     all: "الكل",
     filterLabel: "تصفية حسب اللون",
-    viewTop: "شاهدي النقشة من الأعلى",
-    viewSide: "المنظر الجانبي",
     topSuffix: " — منظر من الأعلى",
     hintDesktop: "مرّري المؤشر على السلة لتشاهدي نقشة القاعدة من الأعلى.",
-    hintMobile: "اضغطي «شاهدي النقشة من الأعلى» لرؤية القاعدة.",
+    hintMobile: "اضغطي على السلة لتشاهدي نقشة القاعدة من الأعلى.",
     orderLike: "اطلبي مثلها",
     prefill: (name, colors) => `أرغب بقطعة مثل: ${name}${colors ? ` (${colors})` : ""}.\nالحجم والاستخدام: `,
     detailsTitle: "الجمال في التفاصيل",
     detailsText:
       "كل قطعة تبدأ بسعف نخيل يُصبغ ويُجدل شريطاً شريطاً، ثم يُخاط بعضه إلى بعض حتى تكتمل. لهذا لا توجد قطعتان متطابقتان تماماً.",
     detailsAlt: "قاعدة سلة خوص منسوجة بنقشة متعرجة من الأعلى",
-    detailsPoints: [
-      { title: "نقشة متعرجة في القاعدة", text: "تظهر عندما تنظرين إلى السلة من الأعلى، وتختلف ألوانها من قطعة لأخرى." },
-      { title: "حافة مجدولة", text: "تُجدل الحافة بشكل منفصل لتمنح القطعة شكلاً متماسكاً." },
-      { title: "مقابض من الحبل", text: "لحمل السلة بسهولة وتعليقها عند الحاجة." },
-    ],
     usesTitle: "قطعة واحدة، استخدامات كثيرة",
     uses: [
       { title: "تخزين أنيق", text: "للبطانيات والألعاب والمناشف، بدل الصناديق البلاستيكية." },
@@ -120,22 +110,15 @@ export const COPY: Record<Locale, SeagrassCopy> = {
     gallerySub: "Real pieces made by our artisans. Order one like it, or choose your own colors and size.",
     all: "All",
     filterLabel: "Filter by color",
-    viewTop: "View the base from above",
-    viewSide: "Side view",
     topSuffix: " — top view",
     hintDesktop: "Hover over a basket to see its woven base from above.",
-    hintMobile: "Tap “View the base from above” to see the woven base.",
+    hintMobile: "Tap a basket to see its woven base from above.",
     orderLike: "Order one like this",
     prefill: (name, colors) => `I'd like a piece like: ${name}${colors ? ` (${colors})` : ""}.\nSize and use: `,
     detailsTitle: "Beauty in the details",
     detailsText:
       "Every piece starts as palm fronds that are dyed and braided strip by strip, then stitched together until the shape is complete. That's why no two pieces are exactly alike.",
     detailsAlt: "Top view of a palm-leaf basket base woven in a zigzag pattern",
-    detailsPoints: [
-      { title: "A zigzag pattern in the base", text: "Visible when you look down into the basket, with colors that vary from piece to piece." },
-      { title: "A braided rim", text: "The rim is braided separately to give the piece a firm, finished shape." },
-      { title: "Rope handles", text: "For easy carrying, or for hanging when needed." },
-    ],
     usesTitle: "One piece, many uses",
     uses: [
       { title: "Beautiful storage", text: "For blankets, toys and towels, instead of plastic boxes." },

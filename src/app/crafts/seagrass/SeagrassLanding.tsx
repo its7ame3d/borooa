@@ -47,7 +47,6 @@ function ProductCard({
   copy: SeagrassCopy;
   onOrder: (p: Product) => void;
 }) {
-  const [showTop, setShowTop] = useState(false);
   const colors = colorLabels(product, locale, copy);
   const name = locale === "en" ? product.nameEn : product.name;
   const alt = locale === "en" ? product.altEn : product.alt;
@@ -63,7 +62,7 @@ function ProductCard({
             fill
             sizes={sizes}
             className={`object-contain p-6 mix-blend-multiply transition duration-500 group-hover:scale-105 ${
-              product.topImage ? (showTop ? "opacity-0" : "opacity-100 sm:group-hover:opacity-0") : ""
+              product.topImage ? "group-hover:opacity-0" : ""
             }`}
           />
           {product.topImage && (
@@ -72,24 +71,13 @@ function ProductCard({
               alt={`${alt}${copy.topSuffix}`}
               fill
               sizes={sizes}
-              className={`object-contain p-6 mix-blend-multiply transition duration-500 ${
-                showTop ? "opacity-100" : "opacity-0 sm:group-hover:opacity-100"
-              }`}
+              className="object-contain p-6 opacity-0 mix-blend-multiply transition duration-500 group-hover:opacity-100"
             />
           )}
         </div>
         <span className="absolute start-4 top-4 rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-gray-700 backdrop-blur">
           {locale === "en" ? product.collectionEn : product.collection}
         </span>
-        {product.topImage && (
-          <button
-            type="button"
-            onClick={() => setShowTop((v) => !v)}
-            className="absolute bottom-4 end-4 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-gray-800 shadow-sm backdrop-blur sm:hidden"
-          >
-            {showTop ? copy.viewSide : copy.viewTop}
-          </button>
-        )}
       </div>
       <div className="mt-3 flex flex-col items-start gap-3 px-1">
         <div>
@@ -247,19 +235,6 @@ export default function SeagrassLanding({
           <div className="text-start">
             <h2 className="text-3xl font-black text-gray-900 sm:text-4xl">{copy.detailsTitle}</h2>
             <p className="mt-4 text-lg leading-8 text-gray-600">{copy.detailsText}</p>
-            <div className="mt-8 flex flex-col gap-5">
-              {copy.detailsPoints.map((point, i) => (
-                <div key={point.title} className="flex gap-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-pink-600 text-sm font-black text-white">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <h3 className="font-bold text-gray-900">{point.title}</h3>
-                    <p className="mt-1 text-gray-600">{point.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
